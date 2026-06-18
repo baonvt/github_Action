@@ -1,10 +1,16 @@
 name: Fist-workflow
-on: workflow_dispatch
+on: push
 jobs:
   first_job:
     runs-on: ubuntu-latest
     steps:
-      - name: print hello
-        run: echo "Hello World"
-      - name: bye
-        run: echo "bye bye"
+      - name: getting my code first
+        uses: actions/checkout@v6
+      - name: installing dependencies
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22.21.0'
+      - name: installing dependencies
+        run: npm install
+      - name: testing my app
+        run: npm test    
